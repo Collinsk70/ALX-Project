@@ -34,4 +34,54 @@ code {
 .nav-links li {
   cursor: pointer;
 }
+.search-container {
+  text-align: center;
+  margin: 20px;
+}
 
+input {
+  padding: 8px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.recipe-card {
+  width: 200px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: 0.3s;
+}
+
+.recipe-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.recipe-details {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.recipe-details h2 {
+  margin-bottom: 10px;
+}
+
+.recipe-details p {
+  margin-bottom: 10px;
+}
