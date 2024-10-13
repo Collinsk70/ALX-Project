@@ -52,36 +52,198 @@ button {
   border: none;
   cursor: pointer;
 }
+/* Main recipe grid styling */
 .recipe-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Individual recipe card styling */
 .recipe-card {
-  width: 200px;
-  border: 1px solid #ddd;
-  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  background-color: #f9f9f9;
-  transition: 0.3s;
 }
 
 .recipe-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.recipe-details {
-  margin: 20px;
+
+/* Recipe title styling */
+.recipe-card h3 {
+  font-size: 1.2rem;
+  margin: 10px;
+  color: #333;
+  text-align: center;
+}
+
+/* Recipe image styling */
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Ingredient information styling */
+.recipe-card p {
+  font-size: 0.9rem;
+  margin: 10px;
+  color: #666;
+  text-align: center;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .recipe-card img {
+    height: 150px;
+  }
+
+  .recipe-card h3 {
+    font-size: 1.1rem;
+  }
+}
+/* Loader Container */
+.loader {
+  display: flex; /* Enables flexbox layout */
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Ensures no external margins */
+  padding: 0; /* Ensures no internal padding */
+  position: fixed; /* Fixes the loader's position */
+  top: 0; /* Aligns it to the top */
+  left: 0; /* Aligns it to the left */
+  width: 100%; /* Full width to cover the entire viewport */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: adds a semi-transparent background */
+  z-index: 9999; /* Ensures it appears above other content */
+}
+
+/* Circular Loader */
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey background */
+  border-top: 8px solid #3498db; /* Blue foreground */
+  border-radius: 50%; /* Makes it circular */
+  width: 50px; /* Width of the loader */
+  height: 50px; /* Height of the loader */
+  animation: spin 1s linear infinite; /* Animation properties */
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
   padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: left;
+  overflow-y: auto; /* Ensure content doesn't overflow */
+  max-height: 80vh; /* Limit height to make it scrollable if necessary */
 }
 
-.recipe-details h2 {
-  margin-bottom: 10px;
+/* Close Button */
+.close-button {
+  background-color: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
-.recipe-details p {
+.close-button:hover {
+  background-color: #ff2a2a;
+}
+
+/* Recipe Image */
+.recipe-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  max-height: 300px; /* Limit image height */
+  object-fit: cover; /* Keep aspect ratio */
+}
+
+/* Ingredients List */
+ul {
+  padding-left: 20px;
+  list-style-type: disc;
+  margin-bottom: 20px;
+}
+
+/* Instructions Section */
+.instructions {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Headings */
+h2, h3 {
+  margin-top: 0;
   margin-bottom: 10px;
+  color: #333;
+}
+
+/* Scrollable modal on smaller screens */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 15px;
+  }
+
+  .recipe-image {
+    max-height: 200px;
+  }
+
+  .close-button {
+    padding: 6px 10px;
+    top: 5px;
+    right: 5px;
+  }
+}
+/* Nutritional Information Styling */
+.nutrition {
+  margin-top: 20px;
+}
+
+.nutrition ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nutrition li {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
 }
