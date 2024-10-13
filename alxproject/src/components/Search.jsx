@@ -4,8 +4,9 @@ function Search({ onSearch }) {
   const [query, setQuery] = useState('');
 
   const handleSearch = () => {
-    if (onSearch) {
-      onSearch(query); // Pass the query back to the parent to fetch recipes
+    if (onSearch && query) {
+      onSearch(query);
+      setQuery(''); // Clear the input field after search
     }
   };
 
