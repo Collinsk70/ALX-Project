@@ -3,15 +3,19 @@ import Navbar from './components/Navbar';
 import Search from './components/Search';
 import DisplayCard from './components/DisplayCard';
 import RecipieDetail from './components/RecipieDetail';
+import About from './components/About';
+import Contacts from './components/Contacts';
 import axios from 'axios';
 
-const API_KEY = "";
+const API_KEY = ""; // Add your API key here
 
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isContactsModalOpen, setIsContactsModalOpen] = useState(false); // State for Contacts modal
 
   const handleSearch = async (query) => {
     setLoading(true);
@@ -66,9 +70,26 @@ function App() {
     setSelectedRecipe(null);
   };
 
+  const handleAboutClick = () => {
+    setIsAboutModalOpen(true); // Open the About modal
+  };
+
+  const handleCloseAboutModal = () => {
+    setIsAboutModalOpen(false); // Close the About modal
+  };
+
+  // Function to open and close the Contacts modal
+  const handleContactsClick = () => {
+    setIsContactsModalOpen(true); // Open the Contacts modal
+  };
+
+  const handleCloseContactsModal = () => {
+    setIsContactsModalOpen(false); // Close the Contacts modal
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar onAboutClick={handleAboutClick} onContactsClick={handleContactsClick} />
       <Search onSearch={handleSearch} />
       {loading ? (
         <div className="loader">
@@ -81,6 +102,16 @@ function App() {
       {/* Render the modal with recipe details */}
       {selectedRecipe && (
         <RecipieDetail recipe={selectedRecipe} onClose={handleCloseModal} />
+      )}
+
+      {/* Render the About modal */}
+      {isAboutModalOpen && (
+        <About onClose={handleCloseAboutModal} />
+      )}
+
+      {/* Render the Contacts modal */}
+      {isContactsModalOpen && (
+        <Contacts onClose={handleCloseContactsModal} />
       )}
     </>
   );

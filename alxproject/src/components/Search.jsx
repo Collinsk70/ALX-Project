@@ -13,7 +13,7 @@ function Search({ onSearch }) {
   return (
     <div className="search-container">
       <h2>Search for a recipe using ingredients</h2>
-      <p>Type your base ingredients, and we will generate a recipe fit for a king...</p>
+      <p>Type your base ingredients, and we will generate a recipe that will blow your mind...</p>
       <input 
         type="text" 
         placeholder="Enter ingredients" 
